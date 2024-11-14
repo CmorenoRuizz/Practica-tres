@@ -25,7 +25,12 @@ section#pelis{
 
   p{
     margin-top: 10px;
-    text-align: center;    
+    text-align: center;        
+  }
+
+  a{
+    text-decoration: none;
+    color: var(--primary-font-color);
   }
 
   h2{
@@ -55,5 +60,42 @@ section#pelis{
 .slide_right:hover {
     box-shadow: inset 400px 0 0 0 #F5A623;
   }
+
+  dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    padding: 20px;
+    background-color: var(--primary-background-color);
+    color:var(--primary-font-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 1;
+    overflow: auto;
+    max-width: 90%;
+    max-height: 80%;
+
+    p strong{
+      color:var(--primary-a-color);
+    }
+
+    h2{
+      margin-bottom: 25px;
+    }
+
+    button{
+      margin-top: 25px;
+    }
+
+    img{
+      margin-bottom: 20px;
+    }
+}
+
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
 
 }

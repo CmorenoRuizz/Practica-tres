@@ -1,8 +1,16 @@
-//meter los .json
-var peliculas = require();
-var usuarios = require();
+var peliculas = require("./pelis.json");
+var usuarios = require("./usuarios.json");
 
-//Obtener todas las pelis// DA FALLO ESTO
+//Obtener todas las pelis
 function getAllPeliculas() {
     return peliculas;
+}
+
+function getPeliculaById(id) {
+    return peliculas.find(pelicula => pelicula.id === id);
+}
+
+module.exports = {
+    getAllPeliculas,
+    getPeliculaById    
 }
