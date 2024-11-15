@@ -23,8 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'R!3aT7@vXs%2zKLx#9&mQ6wP!',
   resave: false,
-  saveUninitialized: false
-}));
+  saveUninitialized: false,
+  }));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

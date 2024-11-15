@@ -29,12 +29,12 @@ router.post('/login', function(req, res) {
 
 // Middleware para verificar autenticación
 function isAuthenticated(req, res, next) {
-  if (req.session.user) {
-    next();
-  } else {
-    res.redirect('/login');
+  if (req.session && req.session.user) {
+    return next(); // Continúa si la sesión existe
   }
+  res.redirect('/login'); // Redirige al login si no hay sesión activa
 }
+
 
 // Ruta protegida para usuarios autenticados (homeUser)
 router.get('/homeUser', isAuthenticated, function(req, res) {
@@ -58,11 +58,18 @@ router.get('/contacto', function(req, res) {
 router.get('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) {
-      return res.redirect('/');
+      console.error('Error destruyendo la sesión:', err);
+      return res.redirect('/'); // Redirige al home público si ocurre un error
     }
-    res.clearCookie('connect.sid');
-    res.redirect('/');
+    res.redirect('/login'); // Redirige al login después de destruir la sesión
   });
 });
+
+
+
+
+
+
+
 
 module.exports = router;
